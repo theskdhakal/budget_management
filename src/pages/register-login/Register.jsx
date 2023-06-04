@@ -10,7 +10,7 @@ import { registerUserAction } from "../../components/user/UserAction";
 
 export const Register = () => {
   const [form, setForm] = useState();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +25,7 @@ export const Register = () => {
     e.preventDefault();
 
     const isUserCreated = await registerUserAction(form);
-    isUserCreated && alert("user registered");
+    isUserCreated && navigate("/dashboard");
   };
 
   return (

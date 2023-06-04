@@ -4,14 +4,16 @@ import { Login } from "./pages/register-login/Login";
 import { Register } from "./pages/register-login/Register";
 import { MainLayout } from "./components/layout/MainLayout";
 import { ToastContainer } from "react-toastify";
+import { Dashboard } from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
     <div>
       <MainLayout>
         <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </MainLayout>
       <ToastContainer />
