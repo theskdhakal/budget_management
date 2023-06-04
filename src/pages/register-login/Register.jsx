@@ -25,6 +25,7 @@ export const Register = () => {
     e.preventDefault();
 
     const isUserCreated = await registerUserAction(form);
+    isUserCreated && alert("user registered");
   };
 
   return (
