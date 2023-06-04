@@ -5,6 +5,7 @@ import { Register } from "./pages/register-login/Register";
 import { MainLayout } from "./components/layout/MainLayout";
 import { ToastContainer } from "react-toastify";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import { Profile } from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </MainLayout>
       <ToastContainer />
