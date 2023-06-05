@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { user } = useSelector((state) => state.user);
@@ -16,14 +17,24 @@ export const Header = () => {
           <Nav className="ms-auto">
             {user?.uid ? (
               <>
-                <Nav.Link href="/">Dashboard</Nav.Link>
-                <Nav.Link href="/profile">Profile</Nav.Link>
-                <Nav.Link href="/">Logout</Nav.Link>
+                <Link to="/dashboard" className="nav-link">
+                  Dashboard
+                </Link>
+                <Link to="/profile" className="nav-link">
+                  Profile{" "}
+                </Link>
+                <Link to="/" className="nav-link">
+                  Logout
+                </Link>
               </>
             ) : (
               <>
-                <Nav.Link href="/register">Register</Nav.Link>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Link to="/register" className="nav-link">
+                  Register{" "}
+                </Link>
+                <Link to="/" className="nav-link">
+                  Login
+                </Link>
               </>
             )}
           </Nav>

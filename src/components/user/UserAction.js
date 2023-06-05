@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth, db } from "../firebase/FirebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -56,3 +59,15 @@ export const autoLogin = (uid) => async (dispatch) => {
     toast.error(error.message);
   }
 };
+
+export const loginUser =
+  ({ email, password }) =>
+  async (dispatch) => {
+    try {
+      //check with auth service
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      user?.uid && dispatch(autoLogin(user.uid));
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
