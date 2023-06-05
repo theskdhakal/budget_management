@@ -7,6 +7,7 @@ import { BsBoxArrowInRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUserAction } from "../../components/user/UserAction";
+import { MainLayout } from "../../components/layout/MainLayout";
 
 export const Register = () => {
   const [form, setForm] = useState();
@@ -25,29 +26,34 @@ export const Register = () => {
     e.preventDefault();
 
     const isUserCreated = await registerUserAction(form);
-    isUserCreated && navigate("/dashboard");
+    isUserCreated && navigate("/");
   };
 
   return (
-    <div className="form-container m-auto mt-4" style={{ width: "555px" }}>
-      <Form className="border p-5 rounded shadow-lg" onSubmit={handleOnSubmit}>
-        <Form.Text>
-          <h3 className="text-center mb-5">Create Your Account !!</h3>
-        </Form.Text>
-        {Inputfields.map((item, i) => (
-          <CustomInput key={i} {...item} onChange={handleOnChange} />
-        ))}
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlInput1"
-        ></Form.Group>
+    <MainLayout>
+      <div className="form-container m-auto mt-4" style={{ width: "555px" }}>
+        <Form
+          className="border p-5 rounded shadow-lg"
+          onSubmit={handleOnSubmit}
+        >
+          <Form.Text>
+            <h3 className="text-center mb-5">Create Your Account !!</h3>
+          </Form.Text>
+          {Inputfields.map((item, i) => (
+            <CustomInput key={i} {...item} onChange={handleOnChange} />
+          ))}
+          <Form.Group
+            className="mb-3"
+            controlId="exampleForm.ControlInput1"
+          ></Form.Group>
 
-        <div className="d-grid">
-          <Button type="submit" variant="success">
-            Register <BsBoxArrowInRight />
-          </Button>
-        </div>
-      </Form>
-    </div>
+          <div className="d-grid">
+            <Button type="submit" variant="success">
+              Register <BsBoxArrowInRight />
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </MainLayout>
   );
 };

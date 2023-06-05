@@ -1,7 +1,12 @@
 import React from "react";
 
 import { TransForm } from "../../components/transaction/TransForm";
+import { MainLayout } from "../../components/layout/MainLayout";
 
 export const Dashboard = () => {
-  return <TransForm />;
+  return (
+    <MainLayout>
+      <TransForm />
+    </MainLayout>
+  );
 };

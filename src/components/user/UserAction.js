@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth, db } from "../firebase/FirebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { setUser } from "./UserSlice";
 
 export const registerUserAction = async ({
   password,
@@ -35,6 +36,22 @@ export const registerUserAction = async ({
     }
 
     console.log("something went wrong");
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const autoLogin = (uid) => async (dispatch) => {
+  try {
+    //get user from firestore service
+
+    const userResponse = await getDoc(doc(db, "users", uid));
+    console.log(userResponse);
+    const userInfo = { ...userResponse.data(), uid: uid };
+    console.log(userInfo);
+
+    //mount user to redux
+    dispatch(setUser(userInfo));
   } catch (error) {
     toast.error(error.message);
   }
