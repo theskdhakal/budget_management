@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { CustomInput } from "../../components/custom-input/CustomInput";
 import { Button, Nav } from "react-bootstrap";
@@ -8,10 +8,18 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUserAction } from "../../components/user/UserAction";
 import { MainLayout } from "../../components/layout/MainLayout";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Register = () => {
   const [form, setForm] = useState();
   const navigate = useNavigate();
+
+  // const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+
+  // useEffect(() => {
+  //   user?.uid && navigate("/dashboard");
+  // }, [user?.uid, navigate]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;

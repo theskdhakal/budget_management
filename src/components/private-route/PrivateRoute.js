@@ -7,6 +7,5 @@ export const PrivateRoute = ({ children }) => {
 
   const { user } = useSelector((state) => state.user);
 
-  console.log(user);
-  return user.uid ? children : <Navigate to="/login" replace />;
+  return user.uid ? children : <Navigate to="/" replace />;
 };
