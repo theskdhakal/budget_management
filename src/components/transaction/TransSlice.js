@@ -9,7 +9,7 @@ const transSlice = createSlice({
   initialState,
   reducers: {
     setTrans: (state, action) => {
-      state.user = action.payload;
+      state.trans = action.payload;
     },
   },
 });

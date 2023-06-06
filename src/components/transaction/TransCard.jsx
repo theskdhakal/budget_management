@@ -4,19 +4,34 @@ import { useSelector } from "react-redux";
 
 export const TransCard = () => {
   const { trans } = useSelector((state) => state.trans);
+
+  console.log(trans);
   return (
-    <Card style={{ width: "18rem" }} className="transCard">
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          <p>Abcd</p>
-          <p>k xa bhai</p>
-          <p>hey bro</p>
-        </Card.Text>
-        <div className="d-grid">
-          <Button variant="danger">Delete</Button>
+    <div className="d-flex flex-wrap">
+      {trans.map((item, i) => (
+        <div key={i} className="flex-fill">
+          <Card
+            style={{
+              width: "18rem",
+              backgroundColor:
+                item.type === "expenses" ? "yellow" : "lightgreen",
+            }}
+            className="transCard mb-2"
+          >
+            <Card.Body>
+              <Card.Title>{item.name}</Card.Title>
+              <Card.Text>
+                <h3 style={{ fontWeight: "bold" }}>{item.type}</h3>
+                <p>{item.amount}</p>
+                <p>{item.date}</p>
+              </Card.Text>
+              <div className="d-grid">
+                <Button variant="danger">Delete</Button>
+              </div>
+            </Card.Body>
+          </Card>
         </div>
-      </Card.Body>
-    </Card>
+      ))}
+    </div>
   );
 };
