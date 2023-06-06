@@ -4,7 +4,6 @@ import { Login } from "./pages/register-login/Login";
 import { Register } from "./pages/register-login/Register";
 import { ToastContainer } from "react-toastify";
 import { Dashboard } from "./pages/dashboard/Dashboard";
-import { Profile } from "./pages/profile/Profile";
 import { PageNotFound } from "./pages/page-not-found/PageNotFound";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
@@ -31,14 +30,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer />

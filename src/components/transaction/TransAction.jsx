@@ -1,4 +1,12 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { toast } from "react-toastify";
 import { setTrans } from "./TransSlice";
 import { db } from "../firebase/FirebaseConfig";
@@ -37,6 +45,25 @@ export const addTransactionAction = (data) => async (dispatch) => {
       //get all transaction according to logged in user
       dispatch(getTransaction(data.uid));
     }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+//deleting the transaction as per logged in user's id
+
+export const deleteTransaction = (id, uid) => async (dispatch) => {
+  try {
+    const resultPending = deleteDoc(doc(db, "transaction", id));
+
+    toast.promise(resultPending, {
+      pending: "please wait while deleting the data",
+    });
+
+    await resultPending;
+
+    dispatch(getTransaction(uid));
+    toast.success("item has been deleted");
   } catch (error) {
     toast.error(error.message);
   }

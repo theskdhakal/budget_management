@@ -36,9 +36,7 @@ export const Header = () => {
                 <Link to="/dashboard" className="nav-link">
                   Dashboard
                 </Link>
-                <Link to="/profile" className="nav-link">
-                  Profile{" "}
-                </Link>
+
                 <Link to="#" className="nav-link" onClick={handleOnLogout}>
                   Logout
                 </Link>
