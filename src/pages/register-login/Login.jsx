@@ -38,34 +38,34 @@ export const Login = () => {
   };
   return (
     <MainLayout>
-      <div className="form-container m-auto mt-4" style={{ width: "555px" }}>
-        <Form
-          className="border p-5 rounded shadow-lg"
-          onSubmit={handleOnSubmit}
+      <div className="login">
+        <div
+          className="form-container m-auto mt-4 login-container"
+          style={{ width: "555px" }}
         >
-          <Form.Text>
-            <h3 className="text-center mb-5">Welcome back</h3>
-          </Form.Text>
-          {loginField.map((item, i) => (
-            <CustomInput key={i} {...item} onChange={handleOnChange} />
-          ))}
-          <Form.Group
-            className="mb-3"
-            controlId="exampleForm.ControlInput1"
-          ></Form.Group>
+          <Form
+            className="border p-5 rounded shadow-lg"
+            onSubmit={handleOnSubmit}
+          >
+            <Form.Text>
+              <h3 className="text-center mb-5">Welcome back</h3>
+            </Form.Text>
+            {loginField.map((item, i) => (
+              <CustomInput key={i} {...item} onChange={handleOnChange} />
+            ))}
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlInput1"
+            ></Form.Group>
 
-          <div className="d-grid">
-            <Button type="submit" variant="primary">
-              login <BsBoxArrowInRight />
-            </Button>
-            <p className="text-center mt-2 ">Forget Your password ??</p>
-            <div className="text-center ">
-              <a href="https://pranx.com/fbi-warning/" className="text-danger">
-                Click Here !!
-              </a>
+            <div className="d-grid">
+              <Button type="submit" variant="primary">
+                login <BsBoxArrowInRight />
+              </Button>
+              <p className="text-center mt-2 ">Forget Your password ??</p>
             </div>
-          </div>
-        </Form>
+          </Form>
+        </div>
       </div>
     </MainLayout>
   );

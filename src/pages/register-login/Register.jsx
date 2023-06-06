@@ -4,7 +4,7 @@ import { CustomInput } from "../../components/custom-input/CustomInput";
 import { Button, Nav } from "react-bootstrap";
 import { Inputfields } from "../../components/inputField/InputField";
 import { BsBoxArrowInRight } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUserAction } from "../../components/user/UserAction";
 import { MainLayout } from "../../components/layout/MainLayout";
@@ -39,7 +39,10 @@ export const Register = () => {
 
   return (
     <MainLayout>
-      <div className="form-container m-auto mt-4" style={{ width: "555px" }}>
+      <div
+        className="form-container m-auto mt-4 register"
+        style={{ width: "555px" }}
+      >
         <Form
           className="border p-5 rounded shadow-lg"
           onSubmit={handleOnSubmit}
@@ -56,9 +59,16 @@ export const Register = () => {
           ></Form.Group>
 
           <div className="d-grid">
-            <Button type="submit" variant="success">
+            <Button type="submit" variant="primary">
               Register <BsBoxArrowInRight />
             </Button>
+
+            <p className="text-center mt-2 ">Already have an account??</p>
+            <div className="text-center ">
+              <Link to="/" className="text-secondary">
+                Redirect to login !
+              </Link>
+            </div>
           </div>
         </Form>
       </div>
