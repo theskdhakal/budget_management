@@ -6,3 +6,19 @@
   border-radius: 30px !important;
   text-align: center;
 }
+
+.login {
+  background-image: url(./Assets/login.jpg);
+  min-height: 86vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.register {
+  background-image: url(./Assets/register.jpg);
+  min-height: 86vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* for laptop screen  */

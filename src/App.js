@@ -18,7 +18,7 @@ function App() {
     user?.uid && dispatch(autoLogin(user.uid));
   });
   return (
-    <div>
+    <div >
       <Routes>
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Login />} />

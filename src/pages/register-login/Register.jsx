@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { registerUserAction } from "../../components/user/UserAction";
 import { MainLayout } from "../../components/layout/MainLayout";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 export const Register = () => {
   const [form, setForm] = useState();
@@ -37,40 +38,44 @@ export const Register = () => {
     isUserCreated && navigate("/");
   };
 
+  const isMobile = useMediaQuery({ maxWidth: 400 });
+
   return (
     <MainLayout>
-      <div
-        className="form-container m-auto mt-4 register"
-        style={{ width: "555px" }}
-      >
-        <Form
-          className="border p-5 rounded shadow-lg"
-          onSubmit={handleOnSubmit}
+      <div className="register py-5">
+        <div
+          className="form-container m-auto "
+          style={{ width: isMobile ? "96vw" : "600px", background: "white" }}
         >
-          <Form.Text>
-            <h3 className="text-center mb-5">Create Your Account !!</h3>
-          </Form.Text>
-          {Inputfields.map((item, i) => (
-            <CustomInput key={i} {...item} onChange={handleOnChange} />
-          ))}
-          <Form.Group
-            className="mb-3"
-            controlId="exampleForm.ControlInput1"
-          ></Form.Group>
+          <Form
+            className="border p-5 rounded shadow-lg m-auto"
+            onSubmit={handleOnSubmit}
+          >
+            <Form.Text>
+              <h3 className="text-center mb-5">Create Your Account !!</h3>
+            </Form.Text>
+            {Inputfields.map((item, i) => (
+              <CustomInput key={i} {...item} onChange={handleOnChange} />
+            ))}
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlInput1"
+            ></Form.Group>
 
-          <div className="d-grid">
-            <Button type="submit" variant="primary">
-              Register <BsBoxArrowInRight />
-            </Button>
+            <div className="d-grid">
+              <Button type="submit" variant="primary">
+                Register <BsBoxArrowInRight />
+              </Button>
 
-            <p className="text-center mt-2 ">Already have an account??</p>
-            <div className="text-center ">
-              <Link to="/" className="text-secondary">
-                Redirect to login !
-              </Link>
+              <p className="text-center mt-2 ">Already have an account??</p>
+              <div className="text-center ">
+                <Link to="/" className="text-secondary">
+                  Redirect to login !
+                </Link>
+              </div>
             </div>
-          </div>
-        </Form>
+          </Form>
+        </div>
       </div>
     </MainLayout>
   );

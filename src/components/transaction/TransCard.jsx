@@ -27,7 +27,7 @@ export const TransCard = () => {
   }, 0);
 
   return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex flex-wrap p-5">
       {sortedTransaction.map((item, i) => (
         <div key={i} className="flex-fill">
           <Card
@@ -62,7 +62,7 @@ export const TransCard = () => {
       <Card
         style={{
           width: "100%",
-          height: "40px",
+          height: "9vh",
           backgroundColor: "skyblue",
           color: total > "0" ? "green" : "red",
         }}
